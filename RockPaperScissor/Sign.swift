@@ -11,7 +11,7 @@ import GameplayKit
 
 let randomChioce = GKRandomDistribution(lowestValue: 0, highestValue: 2)
 
-func randonSign() -> Sign{
+func randomSign() -> Sign{
     let sign =  randomChioce.nextInt()
     if sign == 0 {
         return .rock
