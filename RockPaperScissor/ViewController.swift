@@ -9,6 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    var stateOfGame = GameState.start
     @IBAction func playagain(_ sender: Any) {
         updateGameState()
     }
@@ -34,20 +35,13 @@ class ViewController: UIViewController {
         updateGameState()
     }
 
-    func randomSign() -> String{
-        let sign =  randomChioce.nextInt()
-        switch sign {
-        case 0: return "👊"
-        case 1: return "✌️"
-        case 2: return "🖐️"
-        default:
-            return "🤖️"
-        }
+
+    func play(_ playerSign: Sign){
+        let appSign = randomSign()
+        playerSign.compareResult(appSign)
+         
     }
-    func play(_ sign: Sign){
-        appSign.text = randomSign()
-    }
-    var stateOfGame = GameState.start
+    
     func updateGameState() {
         switch stateOfGame {
         case .start:

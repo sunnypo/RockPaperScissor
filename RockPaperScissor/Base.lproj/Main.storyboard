@@ -57,7 +57,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="75"/>
                                                 <state key="normal" title="✌️"/>
                                                 <connections>
-                                                    <action selector="scisso:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l8Z-nO-YGU"/>
+                                                    <action selector="scissors:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fKL-k9-Lvz"/>
                                                 </connections>
                                             </button>
                                         </subviews>
