@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     func play(_ playerSign: Sign){
         let appSign = randomSign()
         playerSign.compareResult(appSign)
+        
          
     }
     
