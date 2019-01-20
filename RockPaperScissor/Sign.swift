@@ -23,6 +23,16 @@ enum Sign {
             return .scissors
         }
     }
+    func changeEmoji(_computerSign: Sign) -> String {
+        switch self {
+        case .rock:
+            return "✊"
+        case .paper:
+            return "🖐️"
+        case .scissors:
+            return "✌️"
+        }
+    }
     func compareResult(_ playersResult: Sign) -> GameState {
         print(self)
         switch self {

@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     var stateOfGame = GameState.start
     @IBAction func playagain(_ sender: Any) {
+        stateOfGame = GameState.start
         updateGameState()
     }
     @IBAction func scissors(_ sender: Any) {
@@ -36,16 +37,26 @@ class ViewController: UIViewController {
     }
 
 
-    func play(_ playerSign: Sign){
-        let appSign = randomSign()
-        playerSign.compareResult(appSign)
-        
-         
+    func play(_ playerSign: Sign) {
+        let signOfApp = playerSign.randomSign()
+        stateOfGame = playerSign.compareResult(signOfApp)
+        print ("appsign \(signOfApp),playersign \(playerSign), state of game \(stateOfGame)")
+        updateGameState()
+        appSign.text = signOfApp.changeEmoji(_computerSign: signOfApp)
+        switch playerSign{
+        case .scissors:
+            scissorsSign.isHidden = false
+        case .rock:
+            rockSign.isHidden = false
+        case .paper:
+            paperSign.isHidden = false
+        }
     }
     
     func updateGameState() {
         switch stateOfGame {
         case .start:
+            statusOfTheGame.text = "Rock,Paper, Scissors?"
             playAgain.isHidden = true
             appSign.text = "🤖️"
             scissorsSign.isHidden = false
@@ -54,7 +65,26 @@ class ViewController: UIViewController {
             scissorsSign.isEnabled = true
             paperSign.isEnabled = true
             rockSign.isEnabled = true
-        default:
+        case .win:
+            statusOfTheGame.text = "win"
+            playAgain.isHidden = false
+            scissorsSign.isHidden = true
+            paperSign.isHidden = true
+            rockSign.isHidden = true
+            scissorsSign.isEnabled = false
+            paperSign.isEnabled = false
+            rockSign.isEnabled = false
+        case .lose:
+            statusOfTheGame.text = "lose"
+            playAgain.isHidden = false
+            scissorsSign.isHidden = true
+            paperSign.isHidden = true
+            rockSign.isHidden = true
+            scissorsSign.isEnabled = false
+            paperSign.isEnabled = false
+            rockSign.isEnabled = false
+        case .draw:
+            statusOfTheGame.text = "draw"
             playAgain.isHidden = false
             scissorsSign.isHidden = true
             paperSign.isHidden = true
